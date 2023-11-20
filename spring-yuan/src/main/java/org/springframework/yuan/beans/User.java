@@ -1,30 +1,19 @@
 package org.springframework.yuan.beans;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class User {
+	@Value("1")
 	private Long id;
+	@Value("yuan")
 	private String name;
+	@Value("17")
 	private Integer age;
-	//@Autowired
-	private Toy toy;
-
-	public User() {}
-
 	@Autowired
-	public User(Toy toy) {
-		this.toy = toy;
-	}
-
-	//@Autowired
-	public User(Long id, String name, Integer age, Toy toy) {
-		this.id = id;
-		this.name = name;
-		this.age = age;
-		this.toy = toy;
-	}
+	private Toy toy;
 
 	public Long getId() {
 		return id;
@@ -56,5 +45,15 @@ public class User {
 
 	public void setToy(Toy toy) {
 		this.toy = toy;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", age=" + age +
+				", toy=" + toy +
+				'}';
 	}
 }
