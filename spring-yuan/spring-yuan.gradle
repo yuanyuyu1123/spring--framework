@@ -86,4 +86,5 @@ dependencies {
     // https://mvnrepository.com/artifact/org.projectlombok/lombok
     //compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.30'
     implementation group: 'net.bytebuddy', name: 'byte-buddy', version: '1.14.9'
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
 }

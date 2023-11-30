@@ -68,6 +68,7 @@ public interface AnnotatedTypeMetadata {
 	 * @param annotationName the fully-qualified class name of the annotation
 	 * type to look for
 	 * @return whether a matching annotation is defined
+	 * 根据"全类名"判断是否被指定直接注解或元注解标注
 	 */
 	default boolean isAnnotated(String annotationName) {
 		return getAnnotations().isPresent(annotationName);
@@ -84,6 +85,7 @@ public interface AnnotatedTypeMetadata {
 	 * @return a {@link Map} of attributes, with each annotation attribute name
 	 * as map key (e.g. "location") and the attribute's value as map value; or
 	 * {@code null} if no matching annotation is found
+	 * 根据"全类名"获取所有注解属性（包括元注解）
 	 */
 	@Nullable
 	default Map<String, Object> getAnnotationAttributes(String annotationName) {
@@ -104,6 +106,7 @@ public interface AnnotatedTypeMetadata {
 	 * @return a {@link Map} of attributes, with each annotation attribute name
 	 * as map key (e.g. "location") and the attribute's value as map value; or
 	 * {@code null} if no matching annotation is found
+	 * 同上，但是第二个参数传 true 时会把属性中对应值为 Class 的值转为 字符串，避免需要预先加载对应 Class
 	 */
 	@Nullable
 	default Map<String, Object> getAnnotationAttributes(String annotationName,
@@ -128,6 +131,7 @@ public interface AnnotatedTypeMetadata {
 	 * name as map key (e.g. "location") and a list of the attribute's values as
 	 * map value; or {@code null} if no matching annotation is found
 	 * @see #getAllAnnotationAttributes(String, boolean)
+	 * 同上,MultiValueMap 是一个 key 可以对应多个 value 的变种 map
 	 */
 	@Nullable
 	default MultiValueMap<String, Object> getAllAnnotationAttributes(String annotationName) {

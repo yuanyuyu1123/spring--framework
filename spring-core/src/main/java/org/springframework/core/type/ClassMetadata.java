@@ -54,6 +54,7 @@ public interface ClassMetadata {
 	/**
 	 * Return whether the underlying class represents a concrete class,
 	 * i.e. neither an interface nor an abstract class.
+	 * 是否一个具体的类，即不是接口或者抽象类，换句话说，可 new
 	 */
 	default boolean isConcrete() {
 		return !(isInterface() || isAbstract());
@@ -68,6 +69,7 @@ public interface ClassMetadata {
 	 * Determine whether the underlying class is independent, i.e. whether
 	 * it is a top-level class or a nested class (static inner class) that
 	 * can be constructed independently of an enclosing class.
+	 * 是否"独立",TopLevelClass 或者 NestedClass
 	 */
 	boolean isIndependent();
 
@@ -77,6 +79,7 @@ public interface ClassMetadata {
 	 * local class within a method).
 	 * <p>If this method returns {@code false}, then the underlying
 	 * class is a top-level class.
+	 * 是否含有 InnerClass | NestedClass | LocalClass
 	 */
 	default boolean hasEnclosingClass() {
 		return (getEnclosingClassName() != null);
@@ -115,6 +118,7 @@ public interface ClassMetadata {
 	 * access, and private classes and interfaces declared by the class, but excludes
 	 * inherited classes and interfaces. An empty array is returned if no member classes
 	 * or interfaces exist.
+	 * 返回所有（继承、实现）该类的 成员类（内部类、接口除外）
 	 * @since 3.1
 	 */
 	String[] getMemberClassNames();
