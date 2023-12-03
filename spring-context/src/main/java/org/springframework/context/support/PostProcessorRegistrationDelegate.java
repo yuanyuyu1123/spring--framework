@@ -90,7 +90,7 @@ final class PostProcessorRegistrationDelegate {
 
 			for (BeanFactoryPostProcessor postProcessor : beanFactoryPostProcessors) {
 				if (postProcessor instanceof BeanDefinitionRegistryPostProcessor registryProcessor) {
-					registryProcessor.postProcessBeanDefinitionRegistry(registry);
+					registryProcessor.postProcessBeanDefinitionRegistry(registry); //beanFactory注册的后置处理
 					registryProcessors.add(registryProcessor);
 				}
 				else {
@@ -104,6 +104,7 @@ final class PostProcessorRegistrationDelegate {
 			// PriorityOrdered, Ordered, and the rest.
 			List<BeanDefinitionRegistryPostProcessor> currentRegistryProcessors = new ArrayList<>();
 
+			// 这几步是为了给BeanDefinitionRegistryPostProcessor的执行顺序排序:实现PriorityOrdered>实现Ordered>普通
 			// First, invoke the BeanDefinitionRegistryPostProcessors that implement PriorityOrdered.
 			String[] postProcessorNames =
 					beanFactory.getBeanNamesForType(BeanDefinitionRegistryPostProcessor.class, true, false);

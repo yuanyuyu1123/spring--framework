@@ -88,7 +88,7 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * {@link Configuration @Configuration} classes
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... componentClasses) {
-		this();
+		this();//初始化reader和scanner
 		register(componentClasses);
 		refresh();
 	}

@@ -32,9 +32,9 @@ public class YuanApplication {
 		//myEventHandle();
 		context.close();
 
-		StandardClassMetadata standardClassMetadata = new StandardClassMetadata(SunLightEvent.class);
+		//StandardClassMetadata standardClassMetadata = new StandardClassMetadata(SunLightEvent.class);
 
-		yamlHandle();
+		//yamlHandle();
 	}
 
 	public static void myEventHandle(){

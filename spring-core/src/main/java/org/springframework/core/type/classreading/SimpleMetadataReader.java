@@ -47,7 +47,7 @@ final class SimpleMetadataReader implements MetadataReader {
 		SimpleAnnotationMetadataReadingVisitor visitor = new SimpleAnnotationMetadataReadingVisitor(classLoader);
 		getClassReader(resource).accept(visitor, PARSING_OPTIONS);
 		this.resource = resource;
-		this.annotationMetadata = visitor.getMetadata();
+		this.annotationMetadata = visitor.getMetadata(); //在这里获取注解的元数据
 	}
 
 	private static ClassReader getClassReader(Resource resource) throws IOException {
